@@ -1,4 +1,4 @@
-# Random objects publihser.
+# Random objects publisher.
 
 Can be used to simulate reactive stream of random objects of specified Type.
 
