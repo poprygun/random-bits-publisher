@@ -3,8 +3,6 @@ package io.microsamples.streams;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import io.github.benas.randombeans.FieldDefinitionBuilder;
 import io.github.benas.randombeans.api.EnhancedRandom;
-
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -14,7 +12,6 @@ import java.time.Duration;
 import java.util.Random;
 
 
-@Slf4j
 public class BitPublisherTest {
     private static EnhancedRandom enhancedRandom;
 
@@ -45,7 +42,7 @@ public class BitPublisherTest {
     public void shouldKeepEmitting() throws InterruptedException {
 
         bitPublisher.getPublisher()
-                .subscribe(r -> log.info("--> {}", r));
+                .subscribe(System.out::println);
 
         Thread.currentThread().join();
     }

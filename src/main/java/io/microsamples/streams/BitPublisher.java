@@ -4,7 +4,6 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.observables.ConnectableObservable;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
@@ -16,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-@Slf4j
 public class BitPublisher<T> {
 
     private final Flux<T> publisher;
@@ -25,9 +23,9 @@ public class BitPublisher<T> {
 
 
     /**
-     * @param bitsGenerator supplier of object to be emitted
+     * @param bitsGenerator       supplier of object to be emitted
      * @param chunkSizeRandomizer defines a size of chunks of objects to be emitted at once.  It is zero based.
-     * @param emitInterval emit every specified interval - should be longer than 1 millisecond
+     * @param emitInterval        emit every specified interval - should be longer than 1 millisecond
      */
     public BitPublisher(Supplier<T> bitsGenerator
             , IntSupplier chunkSizeRandomizer
@@ -68,16 +66,13 @@ public class BitPublisher<T> {
 
     private void emitBits(ObservableEmitter<T> emitter, List<T> bits) {
         for (T bit : bits) {
-            try {
-                emitter.onNext(bit);
-            } catch (RuntimeException e) {
-                log.error("Cannot send Record", e);
-            }
+            emitter.onNext(bit);
         }
     }
 
     /**
      * Generate batch of random objects
+     *
      * @param number size of list to generate
      * @return list of random objects
      */
