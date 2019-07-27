@@ -20,7 +20,7 @@ public class BitPublisherTest {
     @Before
     public void initPublisher() {
 
-        BitIdRandomizer randomizer = new BitIdRandomizer();
+        var randomizer = new BitIdRandomizer();
         enhancedRandom = EnhancedRandomBuilder.aNewEnhancedRandomBuilder()
                 .randomize(FieldDefinitionBuilder.field().named("id")
                                 .ofType(String.class)
@@ -49,7 +49,7 @@ public class BitPublisherTest {
 
     @Test
     public void shouldEmitSpecifiedNumberOfTracks() {
-        int expectSome = 13;
+        var expectSome = 13;
 
         StepVerifier.create(bitPublisher.getPublisher()
 //                .log() //print the output
