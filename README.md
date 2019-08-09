@@ -13,7 +13,7 @@ enhancedRandom = EnhancedRandomBuilder.aNewEnhancedRandomBuilder()
                         .ofType(String.class)
                         .inClass(Bit.class).get(), randomizer).build();
 
-trackPublisher = new TrackPublisher<>(() -> enhancedRandom.nextObject(Bit.class)
+trackPublisher = new BitPublisher<>(() -> enhancedRandom.nextObject(Bit.class)
         , () -> new Random().nextInt(5) //emmit random batches of 0 to 4 objects
 , Duration.ofSeconds(1)); //every second
 ```
